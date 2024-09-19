@@ -11,13 +11,13 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { 
         type: String, 
-        enum: ['Employee', 'Manager', 'Admin'], // Restrict to these values
+        enum: ['Employee', 'Manager', 'Admin'], 
         default: 'Employee', // Default role is Employee
         required: true
     }
 });
 
-// Method to generate auth token for the user
+//  generate auth token for the user
 userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign(
         { _id: this._id, role: this.role }, // Include role in the token

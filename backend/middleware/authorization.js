@@ -8,13 +8,13 @@ const authenticate = async (req, res, next) => {
     }
     
     try {
-        console.log("Token received:", token);  // Log the received token
+        console.log("Token received:", token);  
         const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
-        console.log("Decoded payload:", decoded); // Log the decoded payload
+        console.log("Decoded payload:", decoded); 
         req.user = await User.findById(decoded._id);
         next();
     } catch (error) {
-        console.error("JWT verification error:", error); // Log the exact error
+        console.error("JWT verification error:", error); 
         return res.status(400).send('Invalid Token.');
     }
     

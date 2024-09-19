@@ -126,7 +126,7 @@ const getEmployee = async (req, res) => {
 };
 
 
-//get all employee
+//get all Task
 const getTask = async (req, res) => {
     try {
         const task = await Task.find();
@@ -136,21 +136,19 @@ const getTask = async (req, res) => {
     }
 };
 
-
+// delete task
 const delTask = async (req, res) => {
     try {
-        const taskId = req.params.id; // Get the task ID from the request params
+        const taskId = req.params.id; 
 
-        // Check if the task exists
+        
         const task = await Task.findById(taskId);
         if (!task) {
             return res.status(404).json({ message: "Task not found" });
         }
 
-        // Delete the task
         await Task.findByIdAndDelete(taskId);
 
-        // Return success message
         res.status(200).json({ message: "Task deleted successfully" });
     } catch (error) {
         console.error("Error deleting task:", error);
@@ -158,7 +156,7 @@ const delTask = async (req, res) => {
     }
 };
 
-
+//update task
 const updateTask = async (req, res) => {
     try {
         const taskId = req.params.id;
@@ -198,12 +196,12 @@ const updateTask = async (req, res) => {
 
 
 
-
+//update user
 const updateUser = async (req, res) => {
     try {
         const userId = req.params.id;
 
-        console.log(`Received userId: ${userId}`); // Debugging statement
+        console.log(`Received userId: ${userId}`);
 
         // Validate the ObjectId
         if (!mongoose.Types.ObjectId.isValid(userId)) {
@@ -216,10 +214,10 @@ const updateUser = async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(
             userId,
             { firstName, lastName, email, password, role },
-            { new: true } // Return the updated user
+            { new: true } 
         );
 
-        console.log(`Updated User: ${JSON.stringify(updatedUser)}`); // Debugging statement
+        console.log(`Updated User: ${JSON.stringify(updatedUser)}`); 
 
         if (!updatedUser) {
             return res.status(404).json({ message: "User not found" });
@@ -237,10 +235,10 @@ const updateUser = async (req, res) => {
 
 
 
-
+//delete user
 const delUser = async (req, res) => {
     try {
-        const userId = req.params.id; // Get the task ID from the request params
+        const userId = req.params.id; 
 
         // Check if the task exists
         const task = await User.findById(userId);
@@ -259,12 +257,12 @@ const delUser = async (req, res) => {
     }
 };
 
-
+//get current user for auth
 const getCurrentUser = async (req, res) => {
     try {
-        const user = await User.findById(req.user.id); // req.user.id is set by the authenticate middleware
+        const user = await User.findById(req.user.id); 
         if (!user) return res.status(404).send({ message: 'User not found' });
-        res.send({ role: user.role }); // Assuming you return the role or other relevant info
+        res.send({ role: user.role }); 
     } catch (error) {
         res.status(500).send({ message: 'Internal server error' });
     }
@@ -274,8 +272,8 @@ const getCurrentUser = async (req, res) => {
 // Get assigned tasks for logged-in employee
 const getAssignedTasks = async (req, res) => {
     try {
-        const userId = req.user._id; // Assuming req.user._id is coming from the decoded JWT
-        
+        const userId = req.user._id; 
+
         // Fetch tasks assigned to this user
         const tasks = await Task.find({ AssignedToEmployeeID: userId });
 
@@ -292,14 +290,13 @@ const getAssignedTasks = async (req, res) => {
 };
 
 
-
+//update the task status 
 const updateTaskStatus = async (req, res) => {
     try {
-        const userId = req.user._id; // User ID from JWT
-        const { id: taskId } = req.params; // Task ID from request params
-        const { status } = req.body; // New status from the request body
+        const userId = req.user._id; 
+        const { id: taskId } = req.params; 
+        const { status } = req.body; 
 
-        // Find the task by ID and ensure it belongs to the logged-in employee
         const task = await Task.findOne({ _id: taskId, AssignedToEmployeeID: userId });
 
         if (!task) {
