@@ -39,14 +39,14 @@ cd RBAC-Dashboard
 Navigate to the backend directory and install dependencies:
 
 bash
-Copy code
+
 cd backend
 npm install
 3. Frontend Setup
 Navigate to the frontend directory and install dependencies:
 
 bash
-Copy code
+
 cd ../frontend
 npm install
 Running the Application
@@ -54,7 +54,7 @@ Running the Application
 In the backend/ directory, run the backend server:
 
 bash
-Copy code
+
 npm run dev
 The backend will run on http://localhost:4000.
 
@@ -62,7 +62,7 @@ The backend will run on http://localhost:4000.
 In the frontend/ directory, run the frontend development server:
 
 bash
-Copy code
+
 npm start
 The frontend will be available at http://localhost:3000. It is configured to proxy requests to the backend API running on port 4000.
 
@@ -71,13 +71,13 @@ To run the application, you need to set up environment variables for both the ba
 
 Backend (backend/.env)
 plaintext
-Copy code
+
 PORT=4000
 MONGO_URI=your_mongodb_connection_string
 JWTPRIVATEKEY=mysecretkey123
 Frontend (frontend/.env)
 plaintext
-Copy code
+
 REACT_APP_API_URL=http://localhost:4000/api
 Scripts
 The following scripts are available:
@@ -112,7 +112,7 @@ License
 This project is licensed under the ISC License.
 
 ruby
-Copy code
+
 
 ### Steps to Install Necessary Packages
 
@@ -124,6 +124,6 @@ Before running the application, ensure you install the required dependencies by 
   npm install
 For the frontend:
 bash
-Copy code
+
 cd ../frontend
 npm install
