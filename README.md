@@ -29,6 +29,10 @@ Before running this project, ensure you have the following installed:
 - **npm** (Node Package Manager) or **yarn**
 - **MongoDB** - Make sure you have MongoDB installed locally or use a cloud provider like MongoDB Atlas.
 
+## DEFAULT ADMIN LOGIN
+User Name: admin@example.com
+Password: admin
+
 ## Installation
 
 ### 1. Clone the repository
@@ -130,6 +134,4 @@ cd ../frontend
 npm install
 
 
-DEFAULT ADMIN LOGIN
-User Name: admin@example.com
-Password: admin
+
