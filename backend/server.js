@@ -3,6 +3,7 @@ const express = require('express');
 const connectDB = require('./db'); 
 const userRoutes = require('./routes/user'); 
 const cors = require("cors");
+const initializeAdmin = require('./initializeAdmin');
 
 
 
@@ -14,7 +15,7 @@ connectDB();
 
 app.use(express.json());
 app.use(cors());
-
+initializeAdmin();
 
 app.use('/api/users', userRoutes);  
 
