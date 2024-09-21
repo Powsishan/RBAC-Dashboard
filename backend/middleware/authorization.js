@@ -8,7 +8,6 @@ const authenticate = async (req, res, next) => {
     }
     
     try {
-        console.log("Token received:", token);  
         const decoded = jwt.verify(token, process.env.JWTPRIVATEKEY);
         console.log("Decoded payload:", decoded); 
         req.user = await User.findById(decoded._id);
