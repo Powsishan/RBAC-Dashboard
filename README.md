@@ -2,6 +2,7 @@
 
 RBAC-Dashboard is a full-stack web application that provides role-based access control (RBAC) for managing tasks and users. It consists of two main components: a **backend** built with **Node.js** and **MongoDB**, and a **frontend** built with **React.js**.
 
+
 ## Table of Contents
 
 - [Project Structure](#project-structure)
@@ -27,6 +28,10 @@ Before running this project, ensure you have the following installed:
 - **Node.js** (v14.x or higher) - [Install Node.js](https://nodejs.org/)
 - **npm** (Node Package Manager) or **yarn**
 - **MongoDB** - Make sure you have MongoDB installed locally or use a cloud provider like MongoDB Atlas.
+
+## DEFAULT ADMIN LOGIN
+User Name: admin@example.com
+Password: admin
 
 ## Installation
 
@@ -127,3 +132,6 @@ bash
 
 cd ../frontend
 npm install
+
+
+
